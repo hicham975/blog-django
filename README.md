@@ -1,4 +1,4 @@
-# blog-django
+# blog-django with tree category
 bolg with django python<br>
 requirements:<br>
 django_autoslug:<br>
