@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+       <!-- Top News Start-->
+        <div class="top-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 tn-left">
+                        <div class="tn-img">
+                            <img src="{{ latestpost.image.url }}" />
+                            <div class="tn-content">
+                                <div class="tn-content-inner">
+                                    <a class="tn-date" href="display_article/{{ latestpost.slug}}"><i class="far fa-clock"></i>{{ latestpost.edited_at}}</a>
+                                    <a class="tn-title" href="display_article/{{ latestpost.slug}}">{{ latestpost.title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 tn-right">
+                        <div class="row">
+                          {% for post in toposts %}        
+
+
+                            <div class="col-md-6">
+                                <div class="tn-img">
+                                    <img src="{{ post.image.url }}" />
+                                    <div class="tn-content">
+                                        <div class="tn-content-inner">
+                                            <a class="tn-date" href="{{ post.slug}}"><i class="far fa-clock"></i>{{ post.edited_at}}</a>
+                                            <a class="tn-title" href="display_article/{{ post.slug}}">{{ post.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              {% endfor %}
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top News End-->
+
+
+
+
+
+
+{% regroup posts by category as post_list %}
+
+
+
+
+        <!-- Category News Start-->
+
+        <div class="cat-news">
+            <div class="container-fluid">
+                <div class="row">
+                    {% for post_category in post_list %}        
+
+                    <div class="col-md-6">
+                        <h2><i class="fas fa-align-justify"></i>{{ post_category.grouper }}</h2>
+                        <div class="row cn-slider">
+                                       {% for post in post_category.list %}
+                                       {% for pos in post.allposts %} 
+                            <div class="col-md-6">
+                                <div class="cn-img">
+                                    <img src="{{ pos.image.url }}" width="450" height="300" />
+                                    <div class="cn-content">
+                                        <div class="cn-content-inner">
+                                            <a class="cn-date" href=""><i class="far fa-clock"></i>{{ pos.edited_at }}</a>
+                                            <a class="cn-title" href="display_article/{{ pos.slug}}">{{ pos.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              {% endfor %}
+                             {% endfor %}
+
+                  
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+      </div>
+    </div>        
+
+   
+
+        <!-- Category News End-->
+
+
+{% endblock %}

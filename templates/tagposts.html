@@ -1,0 +1,100 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+  <!-- Single News Start-->
+        <div class="single-news">
+            <div class="container-fluid">
+                <div class="row">
+                            <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/{{ home }}">Home</a></li>
+                    <li class="breadcrumb-item active">{{ slug }}</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+                    <div class="col-md-8">
+                        {{ msg }}
+
+                         {% for post in posts %}
+                        <div class="sn-content">
+                            <a class="sn-title" href="/display_article/{{ post.slug}}">{{ post.title }}</a><br>
+
+                            <img src="{{ post.image.url }}" width="450" height="300" />
+                            <a class="sn-date" href=""><i class="far fa-clock"></i>{{ post.edited_at }}</a>
+                            <p>
+                               {{ post.intro|safe }}
+                            </p>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                                             
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="sidebar">
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Category</h2>
+                                <div class="category">
+                                    <ul class="fa-ul">
+                                       {% for category in catg %}
+
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span>
+                                            <a href="/all_article/{{ category.slug }}">{{ category.title }}</a></li>
+
+                                        {% endfor %}
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Tags</h2>
+                                <div class="tags">
+
+                                    {% for tag in tags_list %}
+                                    <a href="">{{ tag.name }}</a>
+                                    {% endfor %}
+                                   
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Ads 1 column</h2>
+                                <div class="image">
+                                    <a href=""><img src="{% static 'img/adds-1.jpg' %}" alt="Image"></a>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Ads 2 column</h2>
+                                <div class="image">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href=""><img src="{% static 'img/adds-2.jpg' %}" alt="Image"></a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <a href=""><img src="{% static 'img/adds-2.jpg' %}" alt="Image"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single News End-->  
+
+
+
+
+
+
+
+{% endblock %}
