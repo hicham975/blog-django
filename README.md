@@ -1,10 +1,10 @@
 # blog-django
-bolg with django python
-requirements:
-django_autoslug:
-pip install django-autoslug
-django-ckeditor:
-pip install django-ckeditor
+bolg with django python<br>
+requirements:<br>
+django_autoslug:<br>
+pip install django-autoslug<br>
+django-ckeditor:<br>
+pip install django-ckeditor<br>
 
-Admin login: admin
-      pwd  : Admin123456  
+Admin login: admin<br>
+      pwd  : Admin123456  <br>
